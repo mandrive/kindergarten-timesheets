@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './components/App';
+import ApplicationContainer from './containers/ApplicationContainer';
+import TestComponent from './components/TestComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { createStore, combineReducers } from 'redux'
 import {deepPurple500, lightBlue600} from 'material-ui/styles/colors';
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { defineRoutes } from './routes';
 import 'tether';
+
 require('bootstrap');
 
 injectTapEventPlugin();
@@ -21,34 +25,41 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const store = createStore(
+/*const store = createStore(
   combineReducers({
     routing: routerReducer
   })
 )
 
-const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)*/
 
 ReactDOM.render(
   <AppContainer>
     <MuiThemeProvider muiTheme={muiTheme}>
-      <Router history={history}>
-        <Route path="/" component={App} />
-      </Router>
+      {defineRoutes()}
     </MuiThemeProvider>
   </AppContainer>,
   document.getElementById('app')
 );
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NextApp = require('./components/App').default; // eslint-disable-line global-require
+  /*module.hot.accept('./containers/ApplicationContainer', () => {
+    const newApplicationContainer = require('./containers/ApplicationContainer').default; // eslint-disable-line global-require
     ReactDOM.render(
         <AppContainer>
           <MuiThemeProvider muiTheme={muiTheme}>
-            <Router history={history}>
-              <Route path="/" component={NextApp} />
-            </Router>
+            {defineRoutes(newApplicationContainer)}
+          </MuiThemeProvider>
+        </AppContainer>,
+      document.getElementById('app')
+    );
+  });*/
+  module.hot.accept('./containers/ApplicationContainer', () => {
+    const newApplicationContainer = require('./containers/ApplicationContainer').default; // eslint-disable-line global-require
+    ReactDOM.render(
+        <AppContainer>
+          <MuiThemeProvider muiTheme={muiTheme}>
+            {defineRoutes(newApplicationContainer)}
           </MuiThemeProvider>
         </AppContainer>,
       document.getElementById('app')
