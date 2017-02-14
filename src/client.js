@@ -6,7 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { createStore, combineReducers } from 'redux'
-import {deepOrange500} from 'material-ui/styles/colors';
+import {deepPurple500, lightBlue600} from 'material-ui/styles/colors';
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import 'tether';
@@ -16,7 +16,8 @@ injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
   palette: {
-    accent1Color: deepOrange500,
+    primary1Color: deepPurple500,
+    primary2Color: lightBlue600
   },
 });
 
