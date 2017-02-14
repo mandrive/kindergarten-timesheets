@@ -10,10 +10,11 @@ class WebpackDevConfig extends WebpackBaseConfig {
 
   constructor() {
     super();
+    var devServerEntry = 'webpack-dev-server/client?http://0.0.0.0:' + (process.env.PORT || 8001) + '/';
     this.config = {
       devtool: 'cheap-module-source-map',
       entry: [
-        'webpack-dev-server/client?http://0.0.0.0:8000/',
+        devServerEntry,
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
         './client.js'
