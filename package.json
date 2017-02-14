@@ -19,7 +19,7 @@
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --autoWatch=true --singleRun=false --reporters=mocha,coverage",
     "postinstall": "npm run clean && npm run copy && webpack --progress --bail --env dist -p",
-    "start-prod": "webpack-dev-server --open --env dist -p --progress"
+    "start-prod": "node server/server.js"
   },
   "repository": "",
   "keywords": [],
@@ -71,9 +71,13 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
     "cross-env": "^3.1.0",
+    "express": "^4.14.1",
     "jquery": "^3.1.1",
     "material-ui": "^0.17.0",
+    "path": "^0.12.7",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-hot-loader": "^3.0.0-beta.6",
