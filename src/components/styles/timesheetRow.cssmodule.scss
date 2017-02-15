@@ -6,11 +6,25 @@
 }
 
 .inline-block-wrapper {
-    flex: 0 0 85%;
+    display: flex;
+    flex: 0 0 75%;
+    flex-wrap: wrap;
 }
 
 .content-wrapper {
     margin-top: 10px;
     vertical-align: middle;
     display: flex;
+}
+
+.action-bar {
+    flex: 0 0 10%;
+    text-align: center;
+    min-width: 90px;
+}
+
+@media only screen and (max-width : 767px) {
+    .center-text-sm {
+        text-align: center;
+    }
 }

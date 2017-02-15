@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Paper from 'material-ui/Paper';
 import cssmodules from 'react-css-modules';
 import styles from './styles/dayBox.cssmodule.scss';
 
