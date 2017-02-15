@@ -12,9 +12,6 @@ import {deepPurple500, lightBlue600} from 'material-ui/styles/colors';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import { defineRoutes } from './routes';
-import 'tether';
-
-require('bootstrap');
 
 injectTapEventPlugin();
 
@@ -24,14 +21,6 @@ const muiTheme = getMuiTheme({
     primary2Color: lightBlue600
   },
 });
-
-/*const store = createStore(
-  combineReducers({
-    routing: routerReducer
-  })
-)
-
-const history = syncHistoryWithStore(browserHistory, store)*/
 
 ReactDOM.render(
   <AppContainer>
@@ -43,17 +32,6 @@ ReactDOM.render(
 );
 
 if (module.hot) {
-  /*module.hot.accept('./containers/ApplicationContainer', () => {
-    const newApplicationContainer = require('./containers/ApplicationContainer').default; // eslint-disable-line global-require
-    ReactDOM.render(
-        <AppContainer>
-          <MuiThemeProvider muiTheme={muiTheme}>
-            {defineRoutes(newApplicationContainer)}
-          </MuiThemeProvider>
-        </AppContainer>,
-      document.getElementById('app')
-    );
-  });*/
   module.hot.accept('./containers/ApplicationContainer', () => {
     const newApplicationContainer = require('./containers/ApplicationContainer').default; // eslint-disable-line global-require
     ReactDOM.render(

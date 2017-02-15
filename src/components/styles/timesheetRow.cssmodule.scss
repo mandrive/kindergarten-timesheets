@@ -1,0 +1,16 @@
+.child-info-container {
+    border: 1px dashed gray;
+    padding: 5px;
+    vertical-align: middle;
+    flex: 0 0 15%;
+}
+
+.inline-block-wrapper {
+    flex: 0 0 85%;
+}
+
+.content-wrapper {
+    margin-top: 10px;
+    vertical-align: middle;
+    display: flex;
+}

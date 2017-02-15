@@ -70,15 +70,14 @@
     "webpack-dev-server": "^2.1.0-beta"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
     "compression": "^1.6.2",
     "cors": "^2.8.1",
     "cross-env": "^3.1.0",
     "express": "^4.14.1",
-    "jquery": "^3.1.1",
     "material-ui": "^0.17.0",
     "path": "^0.12.7",
     "react": "^15.0.1",
+    "react-css-modules": "^4.1.0",
     "react-dom": "^15.0.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-redux": "^5.0.2",
@@ -86,7 +85,6 @@
     "react-router-redux": "^4.0.8",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "tether": "^1.4.0",
     "webpack": "^2.1.0-beta.6"
   }
 }

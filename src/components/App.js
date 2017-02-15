@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
-import { Link } from 'react-router';
-import TestComponent from '../components/TestComponent';
+import TimesheetRow from '../components/timesheetRow';
 
-class AppComponent extends React.Component {
-  
+class AppComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1
+    }
+  }
   render() {
     return (
-      <div className="main-app-container container">
-      <div className="row">
-        <AppBar title="Community" />
-        <TestComponent />
-        <Link to="/test">LINK TO TEST!</Link>
+      <div className="main-app-container">
+        <div>
+          <TimesheetRow month={this.state.month} year={this.state.year} />
         </div>
       </div>
     );
