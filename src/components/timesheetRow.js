@@ -20,7 +20,7 @@ class TimesheetRow extends Component {
         return (
             <GridRow>
                 <div className="col-sm-12 col-md-2 col-lg-2 col-xl-2" styleName="center-text-sm">
-                    <i className="material-icons">face</i> Jakiś Dzieciak
+                    <i className="material-icons">face</i> {this.props.child.firstName + ' '+ this.props.child.lastName}
                 </div>
                 <div className="col-sm-12 col-md-8 col-lg-8 col-xl-8">
                     {timesheetBoxes}

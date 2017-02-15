@@ -5,7 +5,7 @@ export default class ApplicationBar extends Component {
     render() {
         return (
             <AppBar 
-              title="Timesheets"/>
+              title="Timesheets" />
         )
     }
 }
