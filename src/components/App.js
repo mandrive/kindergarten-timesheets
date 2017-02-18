@@ -15,7 +15,7 @@ class AppComponent extends Component {
   }
   render() {
     console.log(data);
-    let timesheetRows = data.map(child => (<TimesheetRow month={this.state.month} year={this.state.year} child={child} />));
+    let timesheetRows = data.map(child => (<TimesheetRow month={this.state.month} year={this.state.year} child={child} key={child.id} />));
 
     return (
       <div className="container" styleName="main-app-container">
