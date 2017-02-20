@@ -7,7 +7,7 @@ var app = express();
 var static_path = path.join(__dirname, './../dist');
 
 var generateDocument = function(res) {
-    var doc = new pdfdocument();
+  var doc = new pdfdocument();
   doc.addPage()
    .fontSize(25)
    .text('Here is some vector graphics...', 100, 100);
@@ -32,7 +32,6 @@ app.use('/', express.static(static_path, {
 
 app.get('/api/test', (req, res) => {
   generateDocument(res);
-  //res.sendFile(path.resolve(__dirname, '..', 'dist', 'output.pdf'));
 });
 
 app.get('/app/*', (req, res) => {

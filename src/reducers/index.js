@@ -8,7 +8,15 @@
  */
 /* Populated by react-webpack-redux:reducer */
 import { combineReducers } from 'redux';
+import { children } from './children';
+import { groups } from './groups';
+import { routerReducer } from 'react-router-redux';
 
-const reducers = {};
+const reducers = {
+    children: children,
+    groups: groups,
+    routing: routerReducer
+};
+
 const combined = combineReducers(reducers);
 module.exports = combined;

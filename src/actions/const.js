@@ -1,4 +1,4 @@
-var keyMirror = require('keymirror');
+var keyMirror = require('keyMirror');
 
 module.exports = keyMirror({
     FETCH_GROUPS_IN_PROGRESS: null,
@@ -8,4 +8,8 @@ module.exports = keyMirror({
     GENERATE_INVOICE_IN_PROGRESS: null,
     GENERATE_INVOICE_FAILED: null,
     GENERATE_INVOICE_SUCCEDED: null,
+
+    FETCH_CHILDREN_IN_PROGRESS: null,
+    FETCH_CHILDREN_FAILED: null,
+    FETCH_CHILDREN_SUCCEDED: null,
 });
