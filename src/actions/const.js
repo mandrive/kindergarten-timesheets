@@ -12,4 +12,6 @@ module.exports = keyMirror({
     FETCH_CHILDREN_IN_PROGRESS: null,
     FETCH_CHILDREN_FAILED: null,
     FETCH_CHILDREN_SUCCEDED: null,
+
+    SELECT_GROUP: null
 });

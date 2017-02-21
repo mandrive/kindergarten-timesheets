@@ -3,27 +3,34 @@ import * as ACTIONS from './../actions/const';
 const groupsInitialState = {
     byId: [],
     allIds: [],
-    fetchingGroups: false
+    selectedGroup: {},
+    fetching: false
 }
+
 export const groups = (state = groupsInitialState, action) => {
     switch (action.type) {
         case ACTIONS.FETCH_GROUPS_IN_PROGRESS:
             return {
                 ...state,
-                fetchingGroups: true
+                fetching: true
             }
         case ACTIONS.FETCH_GROUPS_FAILED:
             return {
                 ...state,
-                fetchingGroups: false
+                fetching: false
             }
         case ACTIONS.FETCH_GROUPS_SUCCEDED:
             return {
-                groups: [
+                byId: [
                     ...action.payload
                 ],
                 allIds: [action.payload.map(g => g.id)],
-                fetchingGroups: false
+                fetching: false
+            }
+        case ACTIONS.SELECT_GROUP:
+            return {
+                ...state,
+                selectedGroup: {...state.byId.find(g => g.id === action.payload)}
             }
         default:
             return state
