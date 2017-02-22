@@ -6,7 +6,7 @@ class TimesheetBoxesWrapper extends Component {
         super(props);
     }
     daysInMonth(month,year) {
-        return new Date(year, month, 0).getDate();
+        return new Date(year, month + 1, 0).getDate();
     }
     render() {
         let timesheetBoxes = [];

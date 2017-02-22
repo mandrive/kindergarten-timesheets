@@ -1,9 +1,4 @@
-/* Exports all the actions from a single point.
+import { fetchGroups, fetchChildren, selectGroup } from './actions';
 
-Allows to import actions like so:
-
-import {action1, action2} from '../actions/'
-*/
-/* Populated by react-webpack-redux:action */
-const actions = {};
+const actions = { fetchGroups, fetchChildren, selectGroup };
 module.exports = actions;

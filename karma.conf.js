@@ -19,7 +19,7 @@ module.exports = function karmaConfig(config) {
     client: {
       mocha: {}
     },
-    singleRun: true,
+    singleRun: false,
     reporters: ['mocha', 'coverage', 'junit'],
     mochaReporter: {
       output: 'autowatch'
