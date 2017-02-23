@@ -12,7 +12,7 @@ class TimesheetBoxesWrapper extends Component {
         let timesheetBoxes = [];
 
         for(let i=1;i<=this.daysInMonth(this.props.month, this.props.year);i++) {
-            timesheetBoxes.push(<DayBox text={i} key={i}/>);
+            timesheetBoxes.push(<DayBox text={i} key={i} value={this.props.existingTimesheets[i-1]}/>);
         }
 
         return (

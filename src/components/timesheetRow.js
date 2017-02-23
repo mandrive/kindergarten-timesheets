@@ -11,7 +11,7 @@ class TimesheetRow extends Component {
         return (
             <GridRow>
                 <ChildInfoBox child={this.props.child} />
-                <TimesheetBoxesWrapper month={this.props.month} year={this.props.year} />
+                <TimesheetBoxesWrapper month={this.props.month} year={this.props.year} existingTimesheets={this.props.existingTimesheets} />
                 <InvoiceButton />
             </GridRow>
         )

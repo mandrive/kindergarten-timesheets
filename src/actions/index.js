@@ -1,4 +1,4 @@
-import { fetchGroups, fetchChildren, selectGroup } from './actions';
+import { fetchGroups, fetchChildren, selectGroup, fetchTimesheetsForGroup } from './actions';
 
-const actions = { fetchGroups, fetchChildren, selectGroup };
+const actions = { fetchGroups, fetchChildren, selectGroup, fetchTimesheetsForGroup };
 module.exports = actions;

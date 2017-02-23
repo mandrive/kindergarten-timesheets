@@ -1,4 +1,5 @@
-module.exports = {
+module.exports = [{
+  id: 1,
   childId: 1,
   timesheets: [
     {
@@ -7,4 +8,4 @@ module.exports = {
       presence: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
     }
   ]
-};
+}];

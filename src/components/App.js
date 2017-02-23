@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CircularProgress from 'material-ui/CircularProgress';
 import styles from './styles/app.cssmodule.scss';
 import TimesheetRow from '../components/timesheetRow';
-import { fetchChildren } from './../actions';
+import { fetchChildren, fetchTimesheetsForGroup } from './../actions';
 import DateSelector from './dateSelector';
 
 class AppComponent extends Component {
@@ -32,6 +32,8 @@ class AppComponent extends Component {
       month: newMonth,
       year: newYear
     });
+
+    this.props.getTimesheetsForSelectedGroup(1);
   }
   nextMonth() {
     const newMonth = this.state.month > 11 ? 0 : this.state.month + 1;
@@ -41,6 +43,8 @@ class AppComponent extends Component {
       month: newMonth,
       year: newYear
     });
+
+    this.props.getTimesheetsForSelectedGroup(1);
   }
   render() {
     const timesheetRows = this.props.children.map(child =>
@@ -48,6 +52,7 @@ class AppComponent extends Component {
       month={this.state.month}
       year={this.state.year}
       child={child}
+      existingTimesheets={this.props.timesheets.filter(t => t.childId === child.id && t.timesheets.month === this.state.month && t.timesheets.year === this.state.year)}
       key={child.id} />));
     const circularProgress = this.props.fetching ? (<CircularProgress />) : (<div />);
     const selectedDate = new Date(this.state.year, this.state.month);
@@ -73,12 +78,16 @@ const mapStateToProps = state => ({
               ? state.children.byId.filter(c => c.groupId === state.groups.selectedGroup.id)
               : [],
   isGroupSelected: !!(state.groups.selectedGroup && state.groups.selectedGroup.id > 0),
+  timesheets: state.timesheets.byId,
   fetching: state.children.fetching
 });
 
 const mapDispatchToProps = dispatch => ({
   getAllChildren: () => {
     dispatch(fetchChildren());
+  },
+  getTimesheetsForSelectedGroup: (groupId) => {
+    dispatch(fetchTimesheetsForGroup(groupId));
   }
 });
 
