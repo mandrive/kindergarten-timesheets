@@ -21,7 +21,7 @@ class ApplicationContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         groups: state.groups.byId,
-        title: state.groups.selectedGroup ? state.groups.selectedGroup.name : '',
+        title: state.groups.selectedGroup ? state.groups.selectedGroup.name : 'Wybierz grupę',
         fetchingGroups: state.groups.fetching
     }
 }

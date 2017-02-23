@@ -14,6 +14,7 @@
     "react/jsx-closing-bracket-location": ["off"],
     "react/jsx-space-before-closing": ["off"],
     "react/prefer-stateless-function": ["off"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-underscore-dangle": [ "error", { "allowAfterThis": true }],
     "import/no-unresolved": ["error", {
         "ignore": [
@@ -25,6 +26,7 @@
           "styles/",
           "images/"
         ]
-    }]
+    }],
+    "linebreak-style": ["error", "windows"]
   }
 }

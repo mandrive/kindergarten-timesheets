@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import AppBar from 'material-ui/AppBar';
-import TimesheetRow from '../components/timesheetRow';
+import React, { Component, PropTypes } from 'react';
 import cssmodules from 'react-css-modules';
-import styles from './styles/app.cssmodule.scss';
-import { fetchChildren } from './../actions';
 import { connect } from 'react-redux';
 import CircularProgress from 'material-ui/CircularProgress';
+import styles from './styles/app.cssmodule.scss';
+import TimesheetRow from '../components/timesheetRow';
+import { fetchChildren } from './../actions';
 import DateSelector from './dateSelector';
 
 class AppComponent extends Component {
   constructor(props) {
     super(props);
+
+    const currentDate = new Date();
+
     this.state = {
-      year: new Date().getFullYear(),
-      month: new Date().getMonth()
-    }
+      year: currentDate.getFullYear(),
+      month: currentDate.getMonth()
+    };
 
     this.prevMonth = this.prevMonth.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
@@ -23,8 +25,8 @@ class AppComponent extends Component {
     this.props.getAllChildren();
   }
   prevMonth() {
-    let newMonth = this.state.month < 0 ? 11 : this.state.month - 1;
-    let newYear = newMonth > this.state.month ? this.state.year - 1 : this.state.year;
+    const newMonth = this.state.month < 0 ? 11 : this.state.month - 1;
+    const newYear = newMonth > this.state.month ? this.state.year - 1 : this.state.year;
 
     this.setState({
       month: newMonth,
@@ -32,8 +34,8 @@ class AppComponent extends Component {
     });
   }
   nextMonth() {
-    let newMonth = this.state.month > 11 ? 0 : this.state.month + 1;
-    let newYear = newMonth < this.state.month ? this.state.year + 1 : this.state.year;
+    const newMonth = this.state.month > 11 ? 0 : this.state.month + 1;
+    const newYear = newMonth < this.state.month ? this.state.year + 1 : this.state.year;
 
     this.setState({
       month: newMonth,
@@ -41,33 +43,50 @@ class AppComponent extends Component {
     });
   }
   render() {
-    let timesheetRows = this.props.children.map(child => (<TimesheetRow month={this.state.month} year={this.state.year} child={child} key={child.id} />));
-    let circularProgress = this.props.fetching ? <CircularProgress /> : <div />
-    let selectedDate = new Date(this.state.year, this.state.month);
+    const timesheetRows = this.props.children.map(child =>
+    (<TimesheetRow
+      month={this.state.month}
+      year={this.state.year}
+      child={child}
+      key={child.id} />));
+    const circularProgress = this.props.fetching ? (<CircularProgress />) : (<div />);
+    const selectedDate = new Date(this.state.year, this.state.month);
+    const dateSelector = this.props.isGroupSelected
+    ? (<DateSelector
+      date={selectedDate}
+      goPrevMonth={this.prevMonth}
+      goNextMonth={this.nextMonth}/>)
+    : (<div/>);
 
     return (
       <div className="container" styleName="main-app-container">
         {circularProgress}
-        <DateSelector date={selectedDate} goPrevMonth={this.prevMonth} goNextMonth={this.nextMonth}/>
+        {dateSelector}
         {timesheetRows}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    children: state.groups.selectedGroup ? state.children.byId.filter(c => c.groupId === state.groups.selectedGroup.id) : [],
-    fetching: state.children.fetching
-  }
-}
+const mapStateToProps = state => ({
+  children: state.groups.selectedGroup
+              ? state.children.byId.filter(c => c.groupId === state.groups.selectedGroup.id)
+              : [],
+  isGroupSelected: !!(state.groups.selectedGroup && state.groups.selectedGroup.id > 0),
+  fetching: state.children.fetching
+});
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    getAllChildren: () => {
-      dispatch(fetchChildren())
-    }
+const mapDispatchToProps = dispatch => ({
+  getAllChildren: () => {
+    dispatch(fetchChildren());
   }
-}
+});
+
+AppComponent.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  fetching: PropTypes.bool.isRequired,
+  isGroupSelected: PropTypes.bool.isRequired,
+  getAllChildren: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(cssmodules(styles)(AppComponent));
