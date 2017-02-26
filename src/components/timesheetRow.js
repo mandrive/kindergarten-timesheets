@@ -8,6 +8,7 @@ import ChildInfoBox from '../components/ChildInfoBox';
 
 class TimesheetRow extends Component {
     render() {
+        console.log(this.props.existingTimesheets);
         return (
             <GridRow>
                 <ChildInfoBox child={this.props.child} />

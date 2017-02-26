@@ -14,7 +14,6 @@ export const timesheets = (state = timesheetsInitialState, action) => {
         fetching: true
       };
     case ACTIONS.FETCH_TIMESHEETS_SUCCEDED:
-    debugger;
       return {
         ...state,
         byId: action.payload,

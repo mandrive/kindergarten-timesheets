@@ -10,9 +10,9 @@ class TimesheetBoxesWrapper extends Component {
     }
     render() {
         let timesheetBoxes = [];
-
         for(let i=1;i<=this.daysInMonth(this.props.month, this.props.year);i++) {
-            timesheetBoxes.push(<DayBox text={i} key={i} value={this.props.existingTimesheets[i-1]}/>);
+            var presenceValue = this.props.existingTimesheets && this.props.existingTimesheets.presence.length >= i ? this.props.existingTimesheets.presence[i-1] : 0;
+            timesheetBoxes.push(<DayBox text={i} key={i} value={presenceValue}/>);
         }
 
         return (

@@ -40,7 +40,7 @@ export const fetchTimesheetsForGroup = groupId => (dispatch) => {
   dispatch({
     type: ACTIONS.FETCH_TIMESHEETS_IN_PROGRESS
   });
-  console.log(children);
+  
   const childrenForGroup = children.filter(c => c.groupId == groupId);
   const timesheetsForGroup = timesheets.filter(t => childrenForGroup.findIndex(c => c.id == t.childId) > -1);
 
