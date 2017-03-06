@@ -33,7 +33,7 @@ class AppComponent extends Component {
       year: newYear
     });
 
-    this.props.getTimesheetsForSelectedGroup(1);
+    this.props.getTimesheetsForSelectedGroup(this.props.selectedGroup.id);
   }
   nextMonth() {
     const newMonth = this.state.month > 11 ? 0 : this.state.month + 1;
@@ -44,7 +44,7 @@ class AppComponent extends Component {
       year: newYear
     });
 
-    this.props.getTimesheetsForSelectedGroup(1);
+    this.props.getTimesheetsForSelectedGroup(this.props.selectedGroup.id);
   }
   render() {
     const timesheetRows = this.props.children.map(child =>
@@ -77,6 +77,7 @@ const mapStateToProps = state => ({
   children: state.groups.selectedGroup
               ? state.children.byId.filter(c => c.groupId === state.groups.selectedGroup.id)
               : [],
+  selectedGroup: state.groups.selectedGroup,
   isGroupSelected: !!(state.groups.selectedGroup && state.groups.selectedGroup.id > 0),
   timesheets: state.timesheets.byId,
   fetching: state.children.fetching
@@ -94,7 +95,18 @@ const mapDispatchToProps = dispatch => ({
 AppComponent.propTypes = {
   children: PropTypes.arrayOf(PropTypes.any).isRequired,
   fetching: PropTypes.bool.isRequired,
+  selectedGroup: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string
+  }),
   isGroupSelected: PropTypes.bool.isRequired,
+  timesheets: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    childId: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+    presence: PropTypes.arrayOf(PropTypes.number)
+  })),
   getAllChildren: PropTypes.func.isRequired
 };
 

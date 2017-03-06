@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import cssmodules from 'react-css-modules';
 import styles from './styles/dayBox.cssmodule.scss';
 
@@ -12,11 +12,9 @@ class DayBox extends Component {
     this.toggleDay = this.toggleDay.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.value) {
-      this.setState({
-        checked: nextProps.value > 0
-      });
-    }
+    this.setState({
+      checked: nextProps ? nextProps.value > 0 : false
+    });
   }
   toggleDay() {
     this.setState({
@@ -31,5 +29,10 @@ class DayBox extends Component {
     );
   }
 }
+
+DayBox.propTypes = {
+  value: PropTypes.number.isRequired,
+  text: PropTypes.number.isRequired,
+};
 
 export default cssmodules(styles, {allowMultiple: true})(DayBox);
