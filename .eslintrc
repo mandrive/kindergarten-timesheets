@@ -17,6 +17,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-underscore-dangle": [ "error", { "allowAfterThis": true }],
     "jsx-a11y/no-static-element-interactions": 0,
+    "max-len": ["error", 1000],
     "import/no-unresolved": ["error", {
         "ignore": [
           "config",

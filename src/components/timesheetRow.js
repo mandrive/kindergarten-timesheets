@@ -7,16 +7,15 @@ import TimesheetBoxesWrapper from '../components/TimesheetBoxesWrapper';
 import ChildInfoBox from '../components/ChildInfoBox';
 
 class TimesheetRow extends Component {
-    render() {
-        console.log(this.props.existingTimesheets);
-        return (
-            <GridRow>
-                <ChildInfoBox child={this.props.child} />
-                <TimesheetBoxesWrapper month={this.props.month} year={this.props.year} existingTimesheets={this.props.existingTimesheets} />
-                <InvoiceButton />
-            </GridRow>
-        )
-    }
-};
+  render() {
+    return (
+      <GridRow>
+        <ChildInfoBox child={this.props.child} />
+        <TimesheetBoxesWrapper month={this.props.month} year={this.props.year} existingTimesheets={this.props.existingTimesheets} child={this.props.child} />
+        <InvoiceButton />
+      </GridRow>
+    );
+  }
+}
 
 export default cssmodules(styles)(TimesheetRow);
