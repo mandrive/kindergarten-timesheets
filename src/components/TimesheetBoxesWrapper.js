@@ -29,11 +29,16 @@ class TimesheetBoxesWrapper extends Component {
       }
     });
   }
+  handleToggleChange(childId, month, year, dayNumber, value) {
+    console.log(`Toggling state (new value = ${value}) for day number ${dayNumber} for child ${childId} for date ${month}-${year}`);
+  }
   render() {
     const timesheetBoxes = [];
     for (let i = 1; i <= TimesheetBoxesWrapper.daysInMonth(this.props.month, this.props.year); i += 1) {
       const presenceValue = this.props.existingTimesheets && this.props.existingTimesheets.presence.length >= i ? this.props.existingTimesheets.presence[i - 1] : 0;
-      timesheetBoxes.push(<DayBox text={i} key={i} value={presenceValue} />);
+      timesheetBoxes.push(<DayBox text={i} key={i} value={presenceValue} clickHandler={(value) => {
+        this.handleToggleChange(this.props.child.id, this.props.month, this.props.year, i, value);
+      }} childId={this.props.child.id} />);
     }
 
     return (

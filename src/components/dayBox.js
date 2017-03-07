@@ -20,6 +20,8 @@ class DayBox extends Component {
     this.setState({
       checked: !this.state.checked
     });
+
+    this.props.clickHandler(!this.state.checked);
   }
   render() {
     return (

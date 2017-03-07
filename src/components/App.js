@@ -54,7 +54,7 @@ class AppComponent extends Component {
       child={child}
       existingTimesheets={this.props.timesheets.find(t => t.childId === child.id && t.month === this.state.month && t.year === this.state.year)}
       key={child.id} />));
-    const circularProgress = this.props.fetching ? (<CircularProgress />) : (<div />);
+    const circularProgress = this.props.fetching ? (<div styleName="centered-circular-progress"><CircularProgress /></div>) : (<div />);
     const selectedDate = new Date(this.state.year, this.state.month);
     const dateSelector = this.props.isGroupSelected
     ? (<DateSelector
